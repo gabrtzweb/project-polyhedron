@@ -31,7 +31,7 @@ namespace ProjectPolyhedron.Planet.Rendering
                 triangleIndices[baseIndex + 2] = triangle.z;
             }
 
-            mesh.indexFormat = UnityEngine.Rendering.IndexFormat.UInt16;
+            mesh.indexFormat = UnityEngine.Rendering.IndexFormat.UInt32;
             mesh.vertices = meshVertices;
             mesh.triangles = triangleIndices;
             mesh.RecalculateNormals();

@@ -12,6 +12,7 @@ namespace ProjectPolyhedron.Planet.Components
     public class PlanetAuthoring : MonoBehaviour
     {
         public float Radius = 50f;
+        public int Subdivisions = 3;
         public Material Material;
 
         public class Baker : Baker<PlanetAuthoring>
@@ -27,10 +28,18 @@ namespace ProjectPolyhedron.Planet.Components
                 }
 
                 float radius = authoring.Radius > 0f ? authoring.Radius : PlanetConfig.DefaultRadius;
+                int subdivisions = math.max(0, authoring.Subdivisions);
 
-                using var vertices = IcosahedronTopology.CreateVertices(radius, Allocator.Temp);
-                using var triangles = IcosahedronTopology.CreateTriangles(Allocator.Temp);
-                Mesh mesh = IcosahedronMeshUtility.CreateMesh(vertices, triangles);
+                using var baseVertices = IcosahedronTopology.CreateVertices(radius, Allocator.Temp);
+                using var baseTriangles = IcosahedronTopology.CreateTriangles(Allocator.Temp);
+                using var geodesic = GeodesicSubdivisionUtility.SubdivideToSphere(
+                    baseVertices,
+                    baseTriangles,
+                    radius,
+                    subdivisions,
+                    Allocator.Temp);
+
+                Mesh mesh = IcosahedronMeshUtility.CreateMesh(geodesic.Vertices, geodesic.Triangles);
 
                 var renderMeshArray = new RenderMeshArray(new[] { authoring.Material }, new[] { mesh });
                 var renderMeshDescription = new RenderMeshDescription(
@@ -53,7 +62,8 @@ namespace ProjectPolyhedron.Planet.Components
                 AddSharedComponentManaged(entity, renderMeshArray);
                 AddComponent(entity, new PlanetConfig
                 {
-                    Radius = authoring.Radius
+                    Radius = radius,
+                    Subdivisions = subdivisions
                 });
             }
         }

@@ -149,6 +149,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::ProjectPolyhedron.Planet.Components.PlanetAuthoring
   Radius: 50
+  Subdivisions: 3
   Material: {fileID: 2100000, guid: 60d87c5390d0f1f4d9072fccb16453ae, type: 2}
 --- !u!4 &491991798
 Transform:
