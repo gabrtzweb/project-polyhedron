@@ -1,0 +1,49 @@
+# Unity generated folders
+ProjectPolyhedron/[Ll]ibrary/
+ProjectPolyhedron/[Tt]emp/
+ProjectPolyhedron/[Oo]bj/
+ProjectPolyhedron/[Bb]uild/
+ProjectPolyhedron/[Bb]uilds/
+ProjectPolyhedron/[Ll]ogs/
+ProjectPolyhedron/[Mm]emoryCaptures/
+ProjectPolyhedron/UserSettings/
+
+# Unity generated files
+*.csproj
+*.unityproj
+*.sln
+*.slnx
+*.suo
+*.tmp
+*.user
+*.userprefs
+*.pidb
+*.booproj
+*.svd
+*.pdb
+*.mdb
+*.opendb
+*.VC.db
+
+# Unity package manager
+ProjectPolyhedron/Packages/packages-lock.json
+
+# Addressables and generated artifacts
+ProjectPolyhedron/Assets/AddressableAssetsData/*/*.bin*
+ProjectPolyhedron/Assets/AddressableAssetsData/AddressablesLink/*.xml*
+ProjectPolyhedron/Assets/StreamingAssets/aa.meta
+ProjectPolyhedron/Assets/StreamingAssets/aa/*
+
+# Rider / VS Code / Visual Studio
+.vscode/*
+!.vscode/settings.json
+!.vscode/tasks.json
+!.vscode/launch.json
+!.vscode/extensions.json
+.idea/
+*.sln.iml
+.vs/
+
+# OS files
+.DS_Store
+Thumbs.db
